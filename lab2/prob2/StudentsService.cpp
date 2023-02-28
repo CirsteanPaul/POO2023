@@ -1,7 +1,7 @@
 #include "StudentsService.h"
 #include <cstring>
 
-int compareByName(Student a, Student b) {
+int compareByName(Student& a, Student& b) {
 	int nameSizeOfFirst = strlen(a.getName());
 	int nameSizeOfSecond = strlen(b.getName());
 
@@ -15,7 +15,7 @@ int compareByName(Student a, Student b) {
 	return strcmp(a.getName(), b.getName());
 }
 
-int compareByMathGrade(Student a, Student b) {
+int compareByMathGrade(Student& a, Student& b) {
 	if (a.getMathGrade() > b.getMathGrade()) {
 		return 1;
 	}
@@ -25,7 +25,7 @@ int compareByMathGrade(Student a, Student b) {
 	return 0;
 }
 
-int compareByEnglishGrade(Student a, Student b) {
+int compareByEnglishGrade(Student& a, Student& b) {
 	if (a.getEnglishGrade() > b.getEnglishGrade()) {
 		return 1;
 	}
@@ -35,7 +35,7 @@ int compareByEnglishGrade(Student a, Student b) {
 	return 0;
 }
 
-int compareByHistoryGrade(Student a, Student b) {
+int compareByHistoryGrade(Student& a, Student& b) {
 	if (a.getHistoryGrade() > b.getHistoryGrade()) {
 		return 1;
 	}
@@ -45,12 +45,14 @@ int compareByHistoryGrade(Student a, Student b) {
 	return 0;
 }
 
-int compareByAverageGrade(Student a, Student b) {
+int compareByAverageGrade(Student& a, Student& b) {
 	if (a.getAverageGrade() > b.getAverageGrade()) {
 		return 1;
 	}
+
 	if (a.getAverageGrade() < b.getAverageGrade()) {
 		return -1;
 	}
+
 	return 0;
 }

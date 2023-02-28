@@ -12,10 +12,10 @@ public:
 	bool setEnglishGrade(double grade);
 	bool setHistoryGrade(double grade);
 
-	char* getName();
-	double getMathGrade();
-	double getEnglishGrade();
-	double getHistoryGrade();
-	double getAverageGrade();
+	const char* getName();
+	const double getMathGrade();
+	const double getEnglishGrade();
+	const double getHistoryGrade();
+	const double getAverageGrade();
 };
 

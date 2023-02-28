@@ -38,22 +38,22 @@ bool Student::setEnglishGrade(double grade) {
 	return true;
 }
 
-double Student::getMathGrade() {
+const double Student::getMathGrade() {
 	return this->mathGrade;
 }
 
-double Student::getEnglishGrade() {
+const double Student::getEnglishGrade() {
 	return this->englishGrade;
 }
 
-double Student::getHistoryGrade() {
+const double Student::getHistoryGrade() {
 	return this->historyGrade;
 }
 
-double Student::getAverageGrade() {
+const double Student::getAverageGrade() {
 	return (this->mathGrade + this->englishGrade + this->historyGrade) / 3;
 }
 
-char* Student::getName() {
+const char* Student::getName() {
 	return this->name;
 }
