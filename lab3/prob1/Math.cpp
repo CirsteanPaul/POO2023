@@ -52,16 +52,16 @@ int Math::Add(int count, ...) {
 	return sum;
 }
 
-char* Math::Add(const char* s1, const char* s2) {
-	if(!s1 || !s2) {
+char* Math::AddAsNumbers(const char* s1, const char* s2) {
+	if (!s1 || !s2) {
 		return nullptr;
 	}
-	
+
 	const int size1 = strlen(s1), size2 = strlen(s2);
 	int index1 = size1 - 1, index2 = size2 -1;
 	bool carry = false;
 	int sum = 0, contor = ((size1 > size2) ? size1 : size2) + 1;
-	char* ans = strdup("");
+	char* ans = new char [contor + 2];
 	*(ans + contor + 1) = '\0';
 
 	while (index1 >= 0 && index2 >= 0) {
@@ -129,4 +129,19 @@ char* Math::Add(const char* s1, const char* s2) {
 
 bool Math::isDigit(int c) {
 	return 0 <= c && c <= 9;
+}
+
+char* Math::Add(const char* s1, const char* s2) {
+	if (!s1 || !s2) {
+		return nullptr;
+	}
+
+	int size1 = strlen(s1);
+	int size2 = strlen(s2);
+	char* ans = new char[size1 + size2 + 2];
+
+	strcpy(ans, s1);
+	strcpy(ans + size1, s2);
+
+	return ans;
 }

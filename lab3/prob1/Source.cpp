@@ -23,4 +23,5 @@ int main()
         std::cout << '\n' << "Input is invalid" << '\n';
     }
 
+    std::cout << Math::Add("Hello", " world!"); // Hello world!
 }

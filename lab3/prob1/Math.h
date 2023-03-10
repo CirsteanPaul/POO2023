@@ -11,6 +11,7 @@ public:
 	static int Mul(double, double);
 	static int Mul(double, double, double);
 	static int Add(int count, ...);
+	static char* AddAsNumbers(const char*, const char*);
 	static char* Add(const char*, const char*);
 
 	static bool isDigit(int);
