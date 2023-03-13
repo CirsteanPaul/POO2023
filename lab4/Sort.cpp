@@ -42,6 +42,16 @@ Sort::Sort(char* s) {
 		p = strtok(NULL, delimiters);
 	}
 }
+Sort::Sort(std::initializer_list<int> values) {
+	int i = 0;
+
+	for (auto it = values.begin(); it != values.end() && i < maxArraySize; ++it, ++i) {
+		array[i] = *it;
+	}
+
+	size = i;
+}
+
 
 Sort::Sort(const char* s) {
 	const char* delimiters = ",";

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Sort.h"
+#include <vector>
 #pragma warning(disable : 4996)
 
 int main()
@@ -22,6 +23,10 @@ int main()
 	sort = Sort("10,20,40,1,3,6");
 	sort.BubbleSort(true);
 	sort.Print(); // 1 3 6 10 20 40
+
+	sort = { 1, 3, 2, 7, 5, 33 };
+	sort.InsertSort();
+	sort.Print(); // 33 7 5 3 2 1
 
 	sort = Sort(input);
 	sort.QuickSort(true);
