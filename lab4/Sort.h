@@ -13,7 +13,7 @@ class Sort
 public:
 	Sort(int numberofElements, int minim = 0, int maxim = 20);
 	Sort() : array{2, 5, 6, 7, 1, 3}, size(6) {};
-	Sort(std::initializer_list<int>);
+	Sort(const std::initializer_list<int>&);
 	Sort(int x[], int size);
 	Sort(int size, ...);
 	Sort(char* s);

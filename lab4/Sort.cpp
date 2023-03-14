@@ -4,20 +4,23 @@
 #include <stdlib.h>
 #include <cstring>
 #include <iostream>
+#include <algorithm>
 #pragma warning(disable : 4996)
 
 Sort::Sort(int size, int min, int max) {
 	srand(time(NULL));
 	int index = 0;
-	int maximumSize = (maxArraySize < size ? maxArraySize : size);
-	int difference = max - min;
-	if (difference == 0) difference = min;
+	const int maximumSize = maxArraySize < size ? maxArraySize : size;
+	const int maxx = std::max(max, min);
+	const int minn = std::min(max, min);
+	int difference = maxx - minn;
+	if (difference == 0) difference = minn;
 	this->size = size;
 
 	for (int i = 0; i < maximumSize;i++) {
-		int randomNumber = rand() % (difference) + min;
-		if (difference == min) {
-			randomNumber = min;
+		int randomNumber = rand() % (difference) + minn;
+		if (difference == minn) {
+			randomNumber = minn;
 		}
 		this->array[index++] = randomNumber;
 	}
@@ -41,8 +44,10 @@ Sort::Sort(char* s) {
 		this->array[this->size++] = number;
 		p = strtok(NULL, delimiters);
 	}
+
+	delete p;
 }
-Sort::Sort(std::initializer_list<int> values) {
+Sort::Sort(const std::initializer_list<int>& values) {
 	int i = 0;
 
 	for (auto it = values.begin(); it != values.end() && i < maxArraySize; ++it, ++i) {
@@ -53,7 +58,7 @@ Sort::Sort(std::initializer_list<int> values) {
 }
 
 
-Sort::Sort(const char* s) {
+Sort::Sort(const char const * s) {
 	const char* delimiters = ",";
 	int sizeofString = strlen(s);
 	char* s1 = new char[sizeofString];
@@ -65,6 +70,9 @@ Sort::Sort(const char* s) {
 		this->array[this->size++] = number;
 		p = strtok(NULL, delimiters);
 	}
+
+	delete p;
+	delete[] s1;
 }
 
 Sort::Sort(int count, ...) {
@@ -91,17 +99,17 @@ void Sort::BubbleSort(bool ascendent) {
 }
 
 void Sort::InsertSort(bool ascendent) {
-	int j;
 	for (int i = 1; i < this->size; i++)
 	{
-		int aux = this->array[i];
+		const int aux = this->array[i];
 		int previousIndex = i - 1;
 
 		while (previousIndex >= 0 && CompareByAscendent(ascendent, this->array[previousIndex], aux))
 		{
 			this->array[previousIndex + 1] = this->array[previousIndex];
-			previousIndex = previousIndex - 1;
+			previousIndex--;
 		}
+
 		this->array[previousIndex + 1] = aux;
 	}
 }
@@ -122,12 +130,15 @@ void Sort::Print() {
 	std::cout << '\n';
 }
 
-int Sort::GetElementFromIndex(int index) {
+int Sort::GetElementFromIndex(const int index) {
+	if (index >= size || index < 0) {
+		return 0;
+	}
 	return this->array[index];
 }
 
 int Sort::ConvertCharToNumber(char* s) {
-	int size = strlen(s);
+	const int size = strlen(s);
 	int number = 0;
 
 	for (int i = 0; i < size; i++) {
@@ -149,7 +160,7 @@ void Sort::QuickSortAlogorithm(bool ascendent, int low, int high)
 {
 	if (low < high) {
 
-		int pi = Partition(ascendent, low, high);
+		const int pi = Partition(ascendent, low, high);
 
 		QuickSortAlogorithm(ascendent, low, pi - 1);
 		QuickSortAlogorithm(ascendent, pi + 1, high);
@@ -158,7 +169,7 @@ void Sort::QuickSortAlogorithm(bool ascendent, int low, int high)
 
 int Sort::Partition(bool ascendent, int low, int high)
 {
-	int pivot = this->array[high];
+	const int pivot = this->array[high];
 	int i = (low - 1);
 
 	for (int j = low; j <= high - 1; j++) {
