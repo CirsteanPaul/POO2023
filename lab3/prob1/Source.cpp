@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Math.h"
-
 int main()
 {
     std::cout << Math::Add(4, 8)<< '\n'; // 12
